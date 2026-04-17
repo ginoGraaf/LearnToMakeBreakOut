@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://fvpm7hjwa5bc"]
+
+[ext_resource type="PackedScene" uid="uid://jtlvoptfxfr4" path="res://Scene/Level.tscn" id="1_80nbo"]
+[ext_resource type="AudioStream" uid="uid://d0bkh8u61ncy7" path="res://music/01 - Genesis [Loop] - Soma Animus.wav" id="2_w51g1"]
+
+[node name="Game" type="Node" unique_id=1929125463]
+
+[node name="Node2D" parent="." unique_id=1529245232 instance=ExtResource("1_80nbo")]
+
+[node name="BG Music" type="AudioStreamPlayer2D" parent="." unique_id=1373996909]
+stream = ExtResource("2_w51g1")
+volume_db = -3.331
+autoplay = true
+
+[connection signal="finished" from="BG Music" to="Node2D" method="_on_audio_stream_player_2d_finished"]

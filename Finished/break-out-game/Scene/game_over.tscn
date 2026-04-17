@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://c2mewgb3srglg"]
+
+[ext_resource type="Texture2D" uid="uid://4emej32wjkoe" path="res://Sprite/break assets/Misc/bg.png" id="1_y26ei"]
+[ext_resource type="Script" uid="uid://2hckyt4cijsk" path="res://Scene/game_over.gd" id="1_yxx3c"]
+
+[node name="Game Over" type="Control" unique_id=1870779337]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_yxx3c")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1805835222]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_y26ei")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1982697581]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=2137901800]
+layout_mode = 2
+
+[node name="GameOver" type="Label" parent="MarginContainer/VBoxContainer" unique_id=934839496]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 40
+text = "Game Over"
+
+[node name="Press space" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1051038596]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 28
+text = "Press Space to Try Again"
+
+[node name="Final Score" type="Label" parent="MarginContainer/VBoxContainer" unique_id=736065572]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 20
+text = "Your Final Score"

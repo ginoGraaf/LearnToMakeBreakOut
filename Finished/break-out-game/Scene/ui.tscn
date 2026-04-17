@@ -1,0 +1,86 @@
+[gd_scene format=3 uid="uid://bdcg53xrlspj7"]
+
+[ext_resource type="Texture2D" uid="uid://d2mwkqx8whymg" path="res://Sprite/break assets/Misc/sp_ball.png" id="2_m6e0p"]
+
+[sub_resource type="GDScript" id="GDScript_3i1b0"]
+script/source = "extends Control
+
+#this is a global Scene
+static var image:Texture=load(\"res://Sprite/break assets/Misc/sp_ball.png\")
+var score:=0
+
+func UpdateScore(addScore:int)->void:
+	score+=addScore
+	$ScoreContainer/ScoreLabel.text=\"Score: \"+str(score)
+
+
+func LoseLife(life:int)->void:
+
+	#remove all childeren
+	for child in $LifeContainer/HBoxContainer.get_children():
+		child.queue_free()
+	
+	#create new childeren and set health
+	for i in life:
+		var text_rect=TextureRect.new()
+		text_rect.texture=image
+		text_rect.stretch_mode=TextureRect.STRETCH_KEEP_ASPECT
+		text_rect.expand_mode=TextureRect.EXPAND_FIT_WIDTH
+		$LifeContainer/HBoxContainer.add_child(text_rect)
+"
+
+[node name="UI" type="Control" unique_id=1841071914]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_3i1b0")
+
+[node name="ScoreContainer" type="MarginContainer" parent="." unique_id=445258948]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 31.0
+grow_horizontal = 2
+
+[node name="ScoreLabel" type="Label" parent="ScoreContainer" unique_id=1152996421]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 30
+text = "Score:0"
+
+[node name="LifeContainer" type="MarginContainer" parent="." unique_id=1380775340]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -20.0
+offset_right = 68.0
+grow_vertical = 0
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = -9
+theme_override_constants/margin_bottom = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="LifeContainer" unique_id=631625775]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="TextureRect" type="TextureRect" parent="LifeContainer/HBoxContainer" unique_id=1651445454]
+layout_mode = 2
+texture = ExtResource("2_m6e0p")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="TextureRect2" type="TextureRect" parent="LifeContainer/HBoxContainer" unique_id=1720798857]
+layout_mode = 2
+texture = ExtResource("2_m6e0p")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="TextureRect3" type="TextureRect" parent="LifeContainer/HBoxContainer" unique_id=1880359248]
+layout_mode = 2
+texture = ExtResource("2_m6e0p")
+expand_mode = 2
+stretch_mode = 4

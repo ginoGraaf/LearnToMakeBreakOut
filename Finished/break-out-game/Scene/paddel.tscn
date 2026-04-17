@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://c2a1vn7hn07x0"]
+
+[ext_resource type="Texture2D" uid="uid://po7kd3lpjv1c" path="res://Sprite/break assets/paddle/sp_paddle_strip2.png" id="1_6i5mq"]
+[ext_resource type="Script" uid="uid://ctnumsjkq5jtr" path="res://Scene/paddel.gd" id="1_aqcx7"]
+[ext_resource type="AudioStream" uid="uid://b4fsudyo2kta0" path="res://sounds/bounce on 1.wav" id="3_8unud"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aqcx7"]
+size = Vector2(68, 10)
+
+[node name="paddel" type="StaticBody2D" unique_id=1280621666 groups=["paddel"]]
+collision_mask = 2
+script = ExtResource("1_aqcx7")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=801579289]
+texture = ExtResource("1_6i5mq")
+
+[node name="PadelCollider" type="CollisionShape2D" parent="." unique_id=1705838346]
+position = Vector2(0, -5)
+shape = SubResource("RectangleShape2D_aqcx7")
+
+[node name="PadelCollide" type="AudioStreamPlayer2D" parent="." unique_id=2019666055]
+stream = ExtResource("3_8unud")

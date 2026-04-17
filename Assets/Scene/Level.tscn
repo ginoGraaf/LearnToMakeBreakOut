@@ -1,0 +1,54 @@
+[gd_scene format=4 uid="uid://jtlvoptfxfr4"]
+
+[ext_resource type="Script" uid="uid://dvgil8rx4tlkj" path="res://Scene/level.gd" id="1_j0m1p"]
+[ext_resource type="Texture2D" uid="uid://4emej32wjkoe" path="res://Sprite/break assets/Misc/bg.png" id="1_t7iv1"]
+[ext_resource type="PackedScene" uid="uid://c2a1vn7hn07x0" path="res://Scene/paddel.tscn" id="2_2nifc"]
+[ext_resource type="PackedScene" uid="uid://2dta4gmlcnqh" path="res://Scene/ball.tscn" id="3_vwxat"]
+[ext_resource type="PackedScene" uid="uid://b3pbvpsxei77i" path="res://Scene/brick.tscn" id="4_4gagr"]
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_4gagr"]
+scenes/1/scene = ExtResource("4_4gagr")
+
+[sub_resource type="TileSet" id="TileSet_j0m1p"]
+tile_size = Vector2i(38, 18)
+sources/2 = SubResource("TileSetScenesCollectionSource_4gagr")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6i788"]
+size = Vector2(658, 9)
+
+[node name="Level" type="Node2D" unique_id=1529245232]
+script = ExtResource("1_j0m1p")
+
+[node name="BG" type="Node" parent="." unique_id=850300682]
+
+[node name="TextureRect" type="TextureRect" parent="BG" unique_id=558138201]
+z_index = -5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_t7iv1")
+
+[node name="paddel" parent="." unique_id=1829650005 instance=ExtResource("2_2nifc")]
+position = Vector2(315, 422)
+
+[node name="Ball" parent="." unique_id=19244196 instance=ExtResource("3_vwxat")]
+position = Vector2(317, 355)
+
+[node name="Bricks" type="Node" parent="." unique_id=1941277091]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="Bricks" unique_id=784246134]
+tile_map_data = PackedByteArray("AAADAA4AAgAAAAAAAQAEAA4AAgAAAAAAAQAFAA4AAgAAAAAAAQAGAA4AAgAAAAAAAQAHAA4AAgAAAAAAAQAIAA4AAgAAAAAAAQAJAA4AAgAAAAAAAQAKAA4AAgAAAAAAAQALAA4AAgAAAAAAAQAMAA4AAgAAAAAAAQANAA4AAgAAAAAAAQAOAA4AAgAAAAAAAQAPAA4AAgAAAAAAAQACAA4AAgAAAAAAAQABAA4AAgAAAAAAAQAPAAwAAgAAAAAAAQAOAAwAAgAAAAAAAQANAAwAAgAAAAAAAQAMAAwAAgAAAAAAAQALAAwAAgAAAAAAAQAKAAwAAgAAAAAAAQAJAAwAAgAAAAAAAQAIAAwAAgAAAAAAAQAHAAwAAgAAAAAAAQAGAAwAAgAAAAAAAQAFAAwAAgAAAAAAAQAEAAwAAgAAAAAAAQADAAwAAgAAAAAAAQACAAwAAgAAAAAAAQABAAwAAgAAAAAAAQABAAsAAgAAAAAAAQACAAsAAgAAAAAAAQADAAsAAgAAAAAAAQAEAAsAAgAAAAAAAQAFAAsAAgAAAAAAAQAGAAsAAgAAAAAAAQAHAAsAAgAAAAAAAQAIAAsAAgAAAAAAAQAJAAsAAgAAAAAAAQAKAAsAAgAAAAAAAQALAAsAAgAAAAAAAQAMAAsAAgAAAAAAAQANAAsAAgAAAAAAAQAOAAsAAgAAAAAAAQAPAAsAAgAAAAAAAQABAA8AAgAAAAAAAQACAA8AAgAAAAAAAQADAA8AAgAAAAAAAQAEAA8AAgAAAAAAAQAFAA8AAgAAAAAAAQAGAA8AAgAAAAAAAQAHAA8AAgAAAAAAAQAIAA8AAgAAAAAAAQAJAA8AAgAAAAAAAQAKAA8AAgAAAAAAAQALAA8AAgAAAAAAAQAMAA8AAgAAAAAAAQANAA8AAgAAAAAAAQAOAA8AAgAAAAAAAQAPAA8AAgAAAAAAAQABAAkAAgAAAAAAAQACAAkAAgAAAAAAAQADAAkAAgAAAAAAAQAEAAkAAgAAAAAAAQAFAAkAAgAAAAAAAQAGAAkAAgAAAAAAAQAHAAkAAgAAAAAAAQAIAAkAAgAAAAAAAQAJAAkAAgAAAAAAAQAKAAkAAgAAAAAAAQALAAkAAgAAAAAAAQAMAAkAAgAAAAAAAQANAAkAAgAAAAAAAQAOAAkAAgAAAAAAAQAPAAkAAgAAAAAAAQAPAAgAAgAAAAAAAQAOAAgAAgAAAAAAAQANAAgAAgAAAAAAAQAMAAgAAgAAAAAAAQALAAgAAgAAAAAAAQAKAAgAAgAAAAAAAQAJAAgAAgAAAAAAAQAIAAgAAgAAAAAAAQAHAAgAAgAAAAAAAQAGAAgAAgAAAAAAAQAFAAgAAgAAAAAAAQAEAAgAAgAAAAAAAQADAAgAAgAAAAAAAQACAAgAAgAAAAAAAQABAAgAAgAAAAAAAQA=")
+tile_set = SubResource("TileSet_j0m1p")
+
+[node name="LossBall" type="Area2D" parent="." unique_id=20339336]
+position = Vector2(0, 476)
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LossBall" unique_id=1263989084]
+position = Vector2(319, 5.5)
+shape = SubResource("RectangleShape2D_6i788")
+
+[connection signal="body_entered" from="LossBall" to="." method="_on_loss_ball_body_entered"]
