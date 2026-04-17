@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://jtlvoptfxfr4"]
+
+[ext_resource type="Texture2D" uid="uid://4emej32wjkoe" path="res://Sprite/break assets/Misc/bg.png" id="1_t7iv1"]
+[ext_resource type="PackedScene" uid="uid://c2a1vn7hn07x0" path="res://Scene/paddel.tscn" id="2_2nifc"]
+
+[node name="Level" type="Node2D" unique_id=1529245232]
+
+[node name="BG" type="Node" parent="." unique_id=850300682]
+
+[node name="TextureRect" type="TextureRect" parent="BG" unique_id=558138201]
+z_index = -5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_t7iv1")
+
+[node name="paddel" parent="." unique_id=1829650005 instance=ExtResource("2_2nifc")]
+position = Vector2(315, 422)
